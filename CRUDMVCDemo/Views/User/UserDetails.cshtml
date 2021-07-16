@@ -1,0 +1,58 @@
+﻿@model CRUDMVCDemo.Models.UserAccount
+
+
+@{
+    ViewBag.title = "User Details";
+}
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    
+</head>
+<body>
+    <div>
+        <h4>User Account</h4>
+        <hr />
+
+
+        <table style="border-collapse:collapse;width:100%" cellpadding="2" border="1" cellspacing="2">
+            <th>@Html.DisplayNameFor(model => model.Fullname)</th>
+            <th>@Html.DisplayNameFor(model => model.Username)</th>
+            @*<th>@Html.DisplayNameFor(model => model.Password)</th>
+            <th>@Html.DisplayNameFor(model => model.EncryptedPassword)</th>*@
+            <th>@Html.DisplayNameFor(model => model.isActive)</th>
+            <th>Created Date</th>
+            <th></th>
+
+            @foreach (var item in Model.userlist)
+            {
+            <tr>
+                <td>@Html.DisplayFor(model => item.Fullname)</td>
+                <td>@Html.DisplayFor(model => item.Username)</td>
+                @*<td>@Html.DisplayFor(model => item.Password)</td>
+                <td>@Html.DisplayFor(model => item.EncryptedPassword)</td>*@
+                <td>@Html.DisplayFor(model => item.isActive)</td>
+                <td>@Html.DisplayFor(model => item.SystemDate)</td>
+                <td>
+                    @Html.ActionLink("UserEdit", "UserEdit", new { id = item.gkey }) |@Html.ActionLink("Delete", "UserDelete", new { id = item.gkey }) |
+                   
+                </td>
+            </tr>
+              
+            }
+            
+        </table>
+
+        <p>
+            @Html.ActionLink("Create Account", "UserAccount", new { id = Model.Fullname }) | @Html.ActionLink("Login", "UserLogin", new { id = Model.Fullname })
+        </p>
+       
+    </div>
+    
+</body>
+</html>

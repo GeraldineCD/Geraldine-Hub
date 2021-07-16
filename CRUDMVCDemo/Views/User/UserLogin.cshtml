@@ -1,0 +1,44 @@
+﻿@model CRUDMVCDemo.Models.UserAccount
+
+@{
+    ViewBag.title = "UserLogin";
+}
+<!DOCTYPE html>
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>User Login</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <hr />
+        <div class="form-group" style="color:red">
+            @Html.ValidationMessage("validation")
+        </div>
+        <div class="form-group" required>
+            
+            @Html.LabelFor(m => m.Username)
+            @Html.TextBoxFor(m => m.Username, "", new { @class = "form-control", @placeholder = "Username" })
+
+        </div>
+        <div class="form-group" required>
+           
+            @Html.LabelFor(m => m.Password)
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+        </div>
+        <div class="form-group">
+            <input type="submit" name="submit" class="btn btn-primary" value="Login" />
+        </div>
+        <p>
+            @Html.ActionLink("Create an Account", "UserAccount");
+        </p>
+    }
+</body>
+</html>
+
+
+
